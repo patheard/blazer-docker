@@ -1,6 +1,6 @@
-FROM ruby:3.0.4-alpine3.15
+FROM ruby:3.0.4-alpine3.16
 
-MAINTAINER Andrew Kane <andrew@ankane.org>
+LABEL Author="Andrew Kane <andrew@ankane.org>"
 
 ARG INSTALL_PATH=/app
 ARG RAILS_ENV=production

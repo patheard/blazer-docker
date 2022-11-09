@@ -33,3 +33,10 @@ gem "sqlite3"
 gem "anomaly_detection"
 gem "prophet-rb"
 gem "trend"
+
+# Authentication via Devise and Google OAuth
+gem "dotenv-rails"
+gem "devise"
+gem "omniauth"
+gem "omniauth-google-oauth2"
+gem "omniauth-rails_csrf_protection"
