@@ -1,7 +1,7 @@
 <% blazer_title @query.name %>
 
 <% if @success %>
-  <% run_data = {statement: @query.statement, query_id: @query.id, data_source: @query.data_source, variables: variable_params(@query)} %>
+  <% run_data = { statement: @query.statement, query_id: @query.id, data_source: @query.data_source, variables: variable_params(@query) } %>
   <% run_data.merge!(forecast: "t") if params[:forecast] %>
   <% run_data.merge!(cohort_period: params[:cohort_period]) if params[:cohort_period] %>
   <% run_data.transform_keys!(&:to_s) if Rails::VERSION::MAJOR < 6 %>
@@ -40,7 +40,7 @@
   <p><%= @query.description %></p>
 <% end %>
 
-<%= render partial: "blazer/variables", locals: {action: query_path(@query)} %>
+<%= render partial: "blazer/variables", locals: { action: query_path(@query) } %>
 
 <pre id="code"><code><%= @statement.display_statement %></code></pre>
 

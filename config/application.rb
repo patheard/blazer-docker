@@ -25,14 +25,20 @@ module BlazerSolo
       # does not check data sources
       # not protected by auth, so do not expose data
       get "health", to: ->(env) {
-        if Blazer::Connection.connection.active?
-          [200, {}, ["OK"]]
-        else
-          [503, {}, ["Service Unavailable"]]
-        end
-      }
+                      if Blazer::Connection.connection.active?
+                        [200, {}, ["OK"]]
+                      else
+                        [503, {}, ["Service Unavailable"]]
+                      end
+                    }
 
-      mount Blazer::Engine, at: "/"
+      devise_for :users, controllers: {
+                           omniauth_callbacks: "users/omniauth_callbacks",
+                         }
+
+      authenticate :user, ->(user) { user.present? } do
+        mount Blazer::Engine, at: "/"
+      end
     end
 
     config.cache_classes = true
@@ -43,7 +49,7 @@ module BlazerSolo
     config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"] != "disabled"
 
     if ENV["RAILS_LOG_TO_STDOUT"] != "disabled"
-      logger           = ActiveSupport::Logger.new(STDOUT)
+      logger = ActiveSupport::Logger.new(STDOUT)
       logger.formatter = config.log_formatter
       config.logger = ActiveSupport::TaggedLogging.new(logger)
     end
