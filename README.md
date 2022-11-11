@@ -9,7 +9,7 @@ An example of how to use [ankane/blazer-docker](https://github.com/ankane/blazer
 1. Create a `.env` based on the `.env.example` and add your Google OAuth2 credentials.
 1. Run `docker-compose up` and access at [http://localhost:8080](http://localhost:8080).
 
-All routes are protected by Devise, so you'll need to sign in with Google to access Blazer.  Users that are already signed into their Google account will be automatically signed in to Blazer.
+All routes are protected by Devise, so you'll need to sign in with Google to access Blazer.  Users that are already signed into their Google account will be automatically signed in once they've accepted the consent screen.
 
 ## Notes
 To remove Google Sign-in and use server-side sign-in:
