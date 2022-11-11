@@ -1,4 +1,4 @@
-# Blazer Docker with Devise and Google OAuth2
+# :closed_lock_with_key: Blazer with Devise and Google OAuth2 sign in
 An example of how to use [ankane/blazer-docker](https://github.com/ankane/blazer-docker) with Devise and Google OAuth2 authentication.
 
 ## Setup
@@ -21,4 +21,8 @@ To remove Google Sign-in and use server-side sign-in:
 ```ruby
 <%= button_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, method: :post %>
 ```
+
+## Credits
+- [Google OAuth + Rails 5 using Devise and OmniAuth](https://medium.com/@adamlangsner/google-oauth-rails-5-using-devise-and-omniauth-1b7fa5f72c8e)
+- [How to add Google Sign In (SSO) with Devise to a Ruby on Rails 7 App](https://medium.com/dev-genius/how-to-add-google-sign-in-sso-with-devise-to-a-ruby-on-rails-7-app-6d8c5ef7641b)
 
