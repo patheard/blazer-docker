@@ -1,9 +1,28 @@
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <style>
-    .login_button {
-        float: right;
-        width: 200px;
-        margin: 25px;                
+    .centre {
+        position: relative;
+        height: 100%;
+        font-family: sans-serif;
+    }
+
+    .title {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .title h1 {
+        font-size: 4.2em;
+        margin: 0;
+        color: #2d5c9a;
+    }
+
+    .title h2 {
+        font-size: 1.5em;
+        font-weight: 400;
+        margin: 0 0 1.5em 0;
     }
 </style>
 
@@ -12,7 +31,11 @@
      data-auto_select="true"
      data-login_uri="<%= user_google_oauth2_omniauth_authorize_path %>">
 </div>
-<div class="login_button">
-    <div class="g_id_signin" data-type="standard"></div>
-</div>
 
+<div class="centre">
+    <div class="title">
+        <h1>Blazer</h1>
+        <h2>Notify observability</h2>
+        <div class="g_id_signin" data-type="standard"></div>
+    </div>
+</div>
