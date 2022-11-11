@@ -1,28 +1,45 @@
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Sono:wght@200;500&display=swap');
+
     .centre {
         position: relative;
         height: 100%;
-        font-family: sans-serif;
+    }
+
+    .g_id_signin {
+        position: absolute;
+        z-index: 10;
+        top: 20px;
+        right: 20px;
     }
 
     .title {
         position: absolute;
+        z-index: 5;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
     }
 
     .title h1 {
-        font-size: 4.2em;
+        font: 500 6.6em 'Sono', sans-serif;
+        text-transform: uppercase;        
         margin: 0;
         color: #2d5c9a;
     }
 
     .title h2 {
-        font-size: 1.5em;
-        font-weight: 400;
+        font: 200 2em 'Sono', sans-serif;
+        text-transform: lowercase;
         margin: 0 0 1.5em 0;
+    }
+
+    .title .alert {
+        padding: 1em;
+        font: 200 1em 'Sono', sans-serif;
+        color: #ba0000;
+        border: 1px solid #ba0000;
     }
 </style>
 
@@ -33,9 +50,18 @@
 </div>
 
 <div class="centre">
+    <div class="g_id_signin" 
+        data-type="standard" 
+        data-shape="pill">
+    </div>
     <div class="title">
         <h1>Blazer</h1>
         <h2>Notify observability</h2>
-        <div class="g_id_signin" data-type="standard"></div>
+
+        <% flash.each do |type, msg| %>
+            <% if type == "error" %>
+                <div class="<%= type %>"><%= msg %></div>
+            <% end %>
+        <% end %>
     </div>
 </div>
