@@ -45,7 +45,7 @@
 
 <div id="g_id_onload"
      data-client_id="<%= ENV["GOOGLE_OAUTH_CLIENT_ID"] %>"
-     data-auto_select="true"
+     data-auto_select="<%= !params[:auto_login].present? || params[:auto_login] %>"
      data-login_uri="<%= user_google_oauth2_omniauth_authorize_path %>">
 </div>
 
@@ -55,8 +55,8 @@
         data-shape="pill">
     </div>
     <div class="title">
-        <h1>Blazer</h1>
-        <h2>Notify observability</h2>
+        <h1><%= @auto_login %> <%= t :blazer %></h1>
+        <h2><%= t :notify_o11y %></h2>
 
         <% flash.each do |type, msg| %>
             <% if type == "error" %>
