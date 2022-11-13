@@ -39,3 +39,7 @@ gem "dotenv-rails"
 gem "devise"
 gem "omniauth"
 gem "omniauth-google-oauth2"
+
+group :development, :test do
+  gem "debug", require: false
+end

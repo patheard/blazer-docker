@@ -2,14 +2,14 @@
 
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def google_oauth2
-    user = User.from_omniauth(auth)
-    if user.present?
-      sign_out_all_scopes
-      sign_in_and_redirect user, event: :authentication
+    @user = User.from_omniauth(request.env["omniauth.auth"])
+
+    if @user.present?
+      request.env["omniauth.auth"].except!("extra")
+      sign_in_and_redirect @user, event: :authentication
     else
-      flash[:error] =
-        t "Failed to sign in...", kind: "Google", reason: "#{auth.info.email} is not authorized."
-      redirect_to new_user_session_path
+      session["devise.google_data"] = request.env["omniauth.auth"].except("extra")
+      redirect_to new_user_session_path, error: "Failed to login..."
     end
   end
 
@@ -20,12 +20,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def after_sign_in_path_for(resource_or_scope)
-    stored_location_for(resource_or_scope) || blazer.root_path
-  end
-
-  private
-
-  def auth
-    @auth ||= request.env["omniauth.auth"]
+    blazer.root_path
   end
 end
