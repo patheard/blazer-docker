@@ -13,6 +13,8 @@ gem "anomaly_detection"
 gem "prophet-rb"
 gem "trend"
 
+gem "nokogiri", ">= 1.13.9"
+
 # Authentication via Devise and Google OAuth
 gem "dotenv-rails"
 gem "devise"
