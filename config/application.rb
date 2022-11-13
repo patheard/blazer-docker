@@ -43,7 +43,7 @@ module BlazerSolo
 
     config.cache_classes = true
     config.eager_load = true
-    config.log_level = :info
+    config.log_level = ENV["LOG_LEVEL"].present? ? ENV["LOG_LEVEL"].to_sym : :warn
     config.secret_key_base = ENV["SECRET_KEY_BASE"] || SecureRandom.hex(30)
     config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"] != "disabled"
 
